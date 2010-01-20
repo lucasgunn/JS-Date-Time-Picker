@@ -1,5 +1,5 @@
 /**
- * @author lucas.gunn
+ * @author lucas@pieui.com
  */
 // SE Wrapper function
 (function () {
@@ -19,7 +19,7 @@
 				// Combine settings into defaults
 				var _s = $.extend({}, $.fn.dt_picker.defaults, options);
 				_t.data('dt_settings',_s);
-				// Do we have our basic container in the palge?
+				// Do we have our basic container in the page?
 				var _c = dt_html.create_container(_s);
 				
 				// Get and reset val function if not input type
