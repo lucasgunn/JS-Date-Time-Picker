@@ -1,0 +1,6 @@
+jQuery Date / Time Picker
+
+Whilst there are plenty of choices out there for date picker plugins for jQuery,
+I needed a picker that could also accept and format different date-time strings.
+
+Thus this picker was born.
