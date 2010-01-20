@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>jQuery Date/Time Picker Plugin</title>
+	<link rel="stylesheet" href="./css/dt_picker.css" type="text/css">
+</head>
+<body>
+	<h1>0.91 - Date/Time picker as just DATE picker</h1>
+	<p>
+    <input type="text" id="date_pick" class="date_time_picker" value="very invalid">&nbsp;&nbsp;&nbsp;&nbsp;
+	<input type="text" id="date_pick_7" class="date_time_picker_fortnight" value=""> 
+	</p>
+	<p>
+	Mauris at mauris 
+	<select><option>Testing 1</option><optgroup><option>Testing 2</option></optgroup></select>
+	metus, id bibendum purus. Donec tincidunt commodo sapien quis venenatis. Nulla facilisi. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec et dolor ac dui blandit ornare at dictum lectus. Nulla consequat, dolor id auctor rhoncus, lectus erat rhoncus purus, at eleifend metus urna ac urna. Cras venenatis eleifend turpis, sit amet pulvinar arcu lobortis nec. Nam aliquam, leo vel consequat auctor, leo ligula convallis nulla, non consectetur urna turpis non massa. Sed a est metus.
+	Donec nisi mi, ultrices non facilisis sit amet, 
+	<span class="picker_test" style="font-weight:bold; color:#1177AA; ">span test</span> 
+	tincidunt eu purus. Mauris posuere semper metus et placerat. Sed non enim sit amet sapien malesuada dignissim sit amet sed arcu. Donec pellentesque nisl eget leo ornare auctor. Fusce tristique molestie neque in placerat. Proin eget lacus augue, a porta eros. Etiam turpis neque, pellentesque vel condimentum et, bibendum cursus urna. Donec varius arcu quis quam ornare sodales. Nam in ullamcorper felis. Cras odio nisi, cursus id lacinia eget, pharetra luctus elit. Integer id lectus massa. Praesent ullamcorper aliquam ullamcorper. Nullam fermentum sem sed massa elementum a ultrices libero scelerisque. In malesuada aliquam elementum. Quisque eget mauris ac felis suscipit consequat. Integer lacinia, velit in auctor fermentum, odio sapien feugiat dui, non rutrum massa mauris nec massa. Vivamus sodales interdum scelerisque. Proin tempus posuere orci vitae ornare.
+	<select><option>Testing 1</option><optgroup><option>Testing 2</option></optgroup></select> Mauris facilisis lacus at dolor feugiat blandit. Aenean nec risus lorem, convallis dapibus eros. Praesent non ante ante. Curabitur lorem dolor, pulvinar eu dictum quis, volutpat non arcu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam interdum turpis eget lectus adipiscing quis dignissim sapien condimentum. Praesent posuere est id leo ornare viverra. Integer vel magna id quam commodo vulputate. Sed quam eros, pharetra non imperdiet ut, faucibus eu libero. Nunc iaculis, justo ac auctor sagittis, neque massa elementum ante, a eleifend nunc dolor sed sapien.
+	</p>
+	<p>
+	Morbi non 
+	<input type="text" id="date_pick_2" class="" value=""> 
+	 magna mi. Duis arcu sem, tincidunt sed dignissim et, placerat eget sem. Nunc laoreet bibendum pellentesque. Vestibulum in magna ac purus viverra dictum. Integer mollis, lectus eu bibendum convallis, ligula diam rutrum dolor, sed suscipit arcu tortor ut massa. Nam lobortis quam sed orci facilisis porttitor. Proin ut rutrum massa. Nullam convallis rutrum neque, vitae posuere felis ullamcorper ac. Duis arcu felis, mattis ac accumsan tincidunt, suscipit in nisl. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam a justo neque, cursus pharetra libero. Etiam interdum vulputate neque, eget convallis risus commodo id. Maecenas porttitor hendrerit mi varius imperdiet. Aliquam erat volutpat. Fusce ante turpis, accumsan at sodales at, dictum nec purus. Suspendisse potenti. Nam tincidunt justo id odio viverra non sagittis turpis sodales.
+	Aliquam ultricies mi ac augue fringilla laoreet. 
+	Cras vitae massa nibh, eu tempor odio. Etiam eget dui vitae urna sagittis gravida. Cras eget ipsum ante, at varius erat. Cras sed lectus ac nulla blandit aliquet quis at massa. 
+	Nunc porttitor, neque et ultrices sagittis, ligula sem sodales elit, quis interdum nibh odio tincidunt quam. Duis et tortor quis turpis dapibus elementum id sed metus. Donec euismod lobortis posuere. Morbi porta mi id nunc vestibulum nec molestie urna interdum. Nulla velit nisi, suscipit vel fringilla vel, rutrum ut odio. Vivamus elementum, nunc quis fringilla facilisis, lorem dolor laoreet purus, nec hendrerit nulla purus a sem. 
+	</p>
+	
+		
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+	<script type="text/javascript">
+		jQuery.noConflict();
+	</script>
+	<script type="text/javascript" src="jquery.date.time.picker.js"></script>
+	
+	<script type="text/javascript">
+		// Public method to override all defaults
+		jQuery().dt_picker.new_defaults({
+			show_months		: 3,
+			cal_layout		: 'week',
+			time_display	: 12
+		});
+		
+		var my_min_date = new Date();
+		my_min_date.setDate(03);
+		var my_max_date = new Date();
+		my_max_date.setYear(2010);
+		
+		jQuery(function() {
+			jQuery('#date_pick_2').dt_picker({
+				allow_blank:true
+			});
+			jQuery('input.date_time_picker').dt_picker({
+				cal_layout: 'week',
+				date_time_format: 'DD/MM/YYYY hh:mm:ss',
+				min_date: my_min_date,
+				just_date: true,
+				update_cb: function(date) {
+					alert(date);
+				}
+			});
+			jQuery('input.date_time_picker_fortnight').dt_picker({
+				show_months: 2,
+				cal_layout: 'fortnight',
+				date_time_format: 'YYYYMMDD::hhmmss',
+				first_day_of_week: 'Sun',
+				allow_blank:true
+			});
+			jQuery('span.picker_test').dt_picker({
+				show_months: 3,
+				cal_layout: 'month'
+			});
+			
+		});
+		
+	</script>
+	
+	
+</body>
+</html>

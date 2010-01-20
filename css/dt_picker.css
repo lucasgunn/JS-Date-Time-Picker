@@ -1,0 +1,183 @@
+/**
+ * Note: if you rename the divs by usings options when
+ * initialising a date picker, this css will need to 
+ * change accordingly
+ * 
+ * Paths to images: depending on your installation, you 
+ * may need to amend image paths. Run a find/replace on
+ * the path: '../img/' and replace with your path.
+ */
+
+/* -----> Outer div */
+	body div#dt_picker_popup { 
+		position:absolute; top:0px; left:0px; background:#FFF; display:none; border:1px solid #AAA; 
+		font-family:sans-serif; font-size:78%; overflow:hidden; z-index:100000; margin-top:-1px;
+		font-size:10px; line-height:14px; font-family:Verdana, Arial, sans-serif; width:auto;
+	}
+
+/* -----> Page object */
+	.dt_picker_obj_attached { 
+		cursor:pointer; background:url(../img/dt_cal_icon.png) no-repeat 2px 2px !important;
+		padding:2px; border:1px solid #AAA; white-space:nowrap;
+		padding-left:22px !important; 
+	}
+	.dt_picker_updated_hilighter { 
+		color:#1177AA !important;
+		background-image:url(../img/dt_cal_icon_anim.gif) !important; 
+	}
+	
+	span.dt_clear_field_button {
+		width:20px; background:#FFF url(../img/dt_clear_icon.gif) no-repeat 2px 2px; cursor:pointer; padding:1px 3px;
+		font-family:Verdana, Tahoma, Arial, sans-serif; overflow:hidden; font-size:90%; 
+	}
+		span.dt_clear_field_button span { font-weight:bold; color:#888; visibility:hidden; }
+
+/* -----> IE 6 fix */
+	div#dt_picker_popup_iframe_shim { position:absolute; width:auto; height:auto; overflow:hidden; z-index:99999; left:0px; top:0px; display:none; }
+		div#dt_picker_popup_iframe_shim iframe { width:100%; height:100%; }
+	body > div#dt_picker_popup { overflow:visible; }
+		
+/* -----> Header bits */
+	
+	/* Header - contains back/forward buttons */
+	div#dt_picker_popup_header { height:20px; padding:4px; float:left;   }
+		a#dt_picker_popup_back_month_button, a#dt_picker_popup_forward_month_button	{ 
+			display:block; float:left; width:32px; height:20px; cursor:pointer; 
+		}
+		
+			a#dt_picker_popup_back_month_button span, a#dt_picker_popup_forward_month_button span {
+				display:none;
+			}
+		
+			a#dt_picker_popup_back_month_button { background:url(../img/dt_cal_move_back.png) no-repeat left top; margin-right:20px; }
+			a#dt_picker_popup_forward_month_button { background:url(../img/dt_cal_move_forward.png) no-repeat left top; }
+	
+	
+	/* Close button */
+	div#dt_picker_popup a#dt_picker_popup_close_cal_button {
+		width:20px; height:20px; display:block; position:absolute; cursor:pointer;
+		right: -1px; top:-1px; background:url(../img/dt_cal_close.png) no-repeat left top;
+	}
+		div#dt_picker_popup_header > a#dt_picker_popup_close_cal_button { right: -4px; top:-4px; }
+		div#dt_picker_popup a#dt_picker_popup_close_cal_button span { display:none; }
+
+/* -----> General table styles */
+	
+	div#dt_picker_popup_inner { padding:6px; clear:left; float:left;  }
+	div#dt_picker_popup_time_chooser { padding:6px; float:left; }
+	div#dt_picker_popup table { border-collapse:collapse; margin-bottom:0.6em; width:auto !important; border:0 !important; }
+	div#dt_picker_popup table tbody { border:0 !important; }
+	div#dt_picker_popup table th, div#dt_picker_popup table td {
+		border:1px solid #CCC; text-align:center; width:1.5em; 
+	}
+	div#dt_picker_popup table th { font-weight:bold; color:#333; padding: 1px 0 !important; }
+	div#dt_picker_popup table td { cursor:pointer; color:#777; padding:1px 2px 1px 0; }
+	
+	div#dt_picker_popup table th.dt_weekend { background:#E4E4E4; }
+	div#dt_picker_popup table td.dt_weekend { background:#E4E4E4; }
+	
+/* ------> Specific table styles */
+	
+	div#dt_picker_popup table.dt_picker_cal_layout th.dt_month_header,
+	div#dt_picker_popup div#dt_picker_popup_time_chooser th { 
+		background:url(../img/dt_table_header_back.png) repeat-x left bottom; padding:3px;
+	}
+	
+	div#dt_picker_popup table.dt_picker_cal_layout td,
+	div#dt_picker_popup div#dt_picker_popup_time_chooser td { 
+		text-align:right; 
+	}
+	
+/* -----> Hover and selected styles */
+	
+	div#dt_picker_popup table th.dt_hover { background:#6badce; color:#FFF; }
+	div#dt_picker_popup table td.dt_hover { background:#b9d9e9; color: #000; } 
+		
+	div#dt_picker_popup table th.dt_selected { font-weight:bold; color:#FFF; background:#1177AA; }
+	div#dt_picker_popup table td.dt_selected { font-weight:bold; color:#FFF; background:#6badce; cursor:default; }
+	
+	div#dt_picker_popup table td.dt_date_disabled { border:0; cursor:default; }
+	div#dt_picker_popup table td.dt_time_disabled { border:0; cursor:default; }
+	
+/* -----> Disabled styles */
+	div#dt_picker_popup table td.dt_min_date_disabled, 
+	div#dt_picker_popup table td.dt_max_date_disabled { background:#BBB; color:#FFF; cursor:default; }
+	
+/* -----> Time picker select version */
+	div#dt_picker_popup div.dt_time_chooser_hours_sel, 
+	div#dt_picker_popup div.dt_time_chooser_mins_sel , 
+	div#dt_picker_popup div.dt_time_chooser_secs_sel { 
+		height:2em; float:left; margin-right:2em; 
+	}
+	
+	div#dt_picker_popup div.dt_time_chooser_hours_sel label, 
+	div#dt_picker_popup div.dt_time_chooser_mins_sel  label, 
+	div#dt_picker_popup div.dt_time_chooser_secs_sel  label { color:#333; font-weight:bold;  }
+	
+	div#dt_picker_popup div.dt_time_chooser_hours_sel select, 
+	div#dt_picker_popup div.dt_time_chooser_mins_sel  select, 
+	div#dt_picker_popup div.dt_time_chooser_secs_sel  select { 
+		width:4em; color:#333;font-family:Verdana, Arial, sans-serif; font-size:10px;  
+	}
+		
+/* -----> Layouts changes */
+
+	/* Fortnight layout */
+	div#dt_picker_popup.dt_layout_fortnight {  }
+		div#dt_picker_popup.dt_layout_fortnight div#dt_picker_popup_header {
+			
+		}
+		div#dt_picker_popup.dt_layout_fortnight div#dt_picker_popup_inner {
+			float:left;
+		}
+		div#dt_picker_popup.dt_layout_fortnight div#dt_picker_popup_time_chooser {
+			float:left; width:8em; clear:left;
+		}
+			div#dt_picker_popup.dt_layout_fortnight div.dt_time_chooser_hours_sel,
+			div#dt_picker_popup.dt_layout_fortnight div.dt_time_chooser_mins_sel,
+			div#dt_picker_popup.dt_layout_fortnight div.dt_time_chooser_secs_sel {
+				float:none;
+			}
+			
+			div#dt_picker_popup.dt_layout_fortnight div.dt_time_chooser_hours_sel label, 
+			div#dt_picker_popup.dt_layout_fortnight div.dt_time_chooser_mins_sel  label, 
+			div#dt_picker_popup.dt_layout_fortnight div.dt_time_chooser_secs_sel  label { 
+				float:left; width:6em;  
+			}
+	
+	
+	/* Week layout */
+	div#dt_picker_popup.dt_layout_week {  }
+		div#dt_picker_popup.dt_layout_week div#dt_picker_popup_inner {
+			float:left; 
+		}
+		div#dt_picker_popup.dt_layout_week div#dt_picker_popup_inner table {
+			float:left; margin-left:5px;
+		}
+		
+		div#dt_picker_popup.dt_layout_week div#dt_picker_popup_time_chooser {
+			clear:left;
+		}
+		
+		div#dt_picker_popup.dt_layout_week div#dt_picker_popup_time_chooser { float:left;  }
+	
+	/* Month layout */
+	div#dt_picker_popup.dt_layout_month { width:62em; }
+		div#dt_picker_popup.dt_layout_month  div#dt_picker_popup_inner { float:left;  }
+		div#dt_picker_popup.dt_layout_month  div#dt_picker_popup_time_chooser { clear:left; }
+		
+	div#dt_picker_popup.dt_layout_month div#dt_picker_popup_inner table {  }
+	
+	div#dt_picker_popup.dt_layout_month div#dt_picker_popup_inner th.dt_month_header { width:5em; }
+	
+	div#dt_picker_popup.dt_layout_month div#dt_picker_popup_time_chooser {  }
+		div#dt_picker_popup.dt_layout_month div#dt_picker_popup_time_chooser table {  }
+		
+		div#dt_picker_popup.dt_layout_month div#dt_picker_popup_time_chooser th { 
+			width: 5em;
+		} 
+		div#dt_picker_popup.dt_layout_month div#dt_picker_popup_time_chooser td { 
+			
+		}
+	
+
