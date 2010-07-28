@@ -122,6 +122,7 @@
 			show_time_chooser		: true,
 			time_display			: 24, // or 12
 			update_cb				: null,
+			clear_cb				: null,
 			visual_time_chooser		: true
 		};
 		
@@ -152,7 +153,46 @@
 				mid_mon.setDate(15);
 				_t.data('dt_mid_mon_date', mid_mon);
 			});
+		};
+		
+		// Get date as date or string
+		$.fn.dt_getCurrDate = function() {
+			var jThis    = $(this[0]);
+			var settings = jThis.data('dt_settings');
+			var date = jThis.data('dt_curr_date');
+			return {
+				asString: dt_date.encode(date,settings.date_time_format,settings.just_date),
+				asDate:   date
+			};
+		};
+		
+		// Set current date
+		$.fn.dt_setCurrDate = function(date) {
+			var dateObj, dateStr;
+			var jThis    = $(this[0]);
+			var settings = jThis.data('dt_settings');
+			
+			if(jThis[0].tagName.toLowerCase() !== 'input') {
+				jThis.val = jThis.text;
+			}
+			
+			if(typeof date == 'string') {
+				dateStr = date;
+				dateObj = dt_date.decode(date,settings.date_time_format,settings.default_date_time);
+			} else {
+				dateObj = date;
+				dateStr = dt_date.encode(date,settings.date_time_format,settings.just_date);
+			}
+			
+			jThis.val(dateStr);
+			jThis.data('dt_curr_date',dateObj);
+			var mid_mon = new Date(dateObj.valueOf());
+			mid_mon.setDate(15);
+			jThis.data('dt_mid_mon_date', mid_mon);
+			
+			return this;
 		}
+		
 		
 		// Private functions -----------------------------------------------------------------------------------
 		
@@ -163,6 +203,9 @@
 				if(settings.allow_blank) {
 					var button = $('<span class="dt_clear_field_button" title="Clear field"><span>X</span></span>');
 					button.click(function() {
+						if(settings.clear_cb !== null  && typeof settings.clear_cb == 'function'){
+							settings.clear_cb.call(obj);
+						}
 						obj.val('');
 					});
 					button.css({height:Math.round(obj.outerHeight())+'px'});

@@ -39,11 +39,11 @@
 	
 	<script type="text/javascript">
 		// Public method to override all defaults
-		jQuery().dt_picker.new_defaults({
+		/* jQuery().dt_picker.new_defaults({
 			show_months		: 3,
 			cal_layout		: 'week',
 			time_display	: 12
-		});
+		}); */
 		
 		var my_min_date = new Date();
 		my_min_date.setDate(03);
@@ -54,15 +54,27 @@
 			jQuery('#date_pick_2').dt_picker({
 				allow_blank:true
 			});
-			jQuery('input.date_time_picker').dt_picker({
+			var picker = jQuery('input.date_time_picker').dt_picker({
 				cal_layout: 'week',
 				date_time_format: 'DD/MM/YYYY hh:mm:ss',
 				min_date: my_min_date,
 				just_date: true,
 				update_cb: function(date) {
 					alert(date);
+				},
+				allow_blank:true,
+				clear_cb:function() {
+					alert('Field cleared');
 				}
 			});
+			
+			setTimeout(function() {
+				alert(picker.dt_getCurrDate().asString);
+				
+				picker.dt_setCurrDate('16/09/2010');
+				// picker.dt_setCurrDate(new Date(new Date().valueOf() + 100000000000));
+			},1500);
+			
 			jQuery('input.date_time_picker_fortnight').dt_picker({
 				show_months: 2,
 				cal_layout: 'fortnight',
