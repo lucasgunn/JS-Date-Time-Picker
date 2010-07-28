@@ -326,7 +326,7 @@
 				
 				if(settings.update_cb !== null && typeof settings.update_cb == 'function') {
 					dt_utils.yield(function() {
-						settings.update_cb({
+						settings.update_cb.call(obj,{
 							date_time: date,
 							enc_date_time: new_date
 						});
