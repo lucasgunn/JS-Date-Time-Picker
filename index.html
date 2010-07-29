@@ -64,16 +64,18 @@
 				},
 				allow_blank:true,
 				clear_cb:function() {
+					console.log(this.dt_getCurrDate());
 					alert('Field cleared');
 				}
 			});
 			
 			setTimeout(function() {
-				alert(picker.dt_getCurrDate().asString);
-				
-				picker.dt_setCurrDate('16/09/2010');
+				// alert(picker.dt_getCurrDate().asString);
+				var date = picker.dt_getCurrDate();
+				var newDate = new Date(date.asDate.valueOf() + (24*60*60*1000) );
+				picker.dt_setCurrDate(newDate);
 				// picker.dt_setCurrDate(new Date(new Date().valueOf() + 100000000000));
-			},1500);
+			},333);
 			
 			jQuery('input.date_time_picker_fortnight').dt_picker({
 				show_months: 2,

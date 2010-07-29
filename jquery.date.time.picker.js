@@ -160,6 +160,7 @@
 			var jThis    = $(this[0]);
 			var settings = jThis.data('dt_settings');
 			var date = jThis.data('dt_curr_date');
+			
 			return {
 				asString: dt_date.encode(date,settings.date_time_format,settings.just_date),
 				asDate:   date
@@ -207,6 +208,11 @@
 							settings.clear_cb.call(obj);
 						}
 						obj.val('');
+						obj.data('dt_curr_date',new Date( settings.default_date_time.valueOf() ) );
+						var mid_mon = new Date(obj.data('dt_curr_date').valueOf());
+						mid_mon.setDate(15);
+						obj.data('dt_mid_mon_date', mid_mon);
+						
 					});
 					button.css({height:Math.round(obj.outerHeight())+'px'});
 					obj.after(button);
