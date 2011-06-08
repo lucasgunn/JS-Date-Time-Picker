@@ -268,16 +268,17 @@
 				if(cell.hasClass('dt_min_date_disabled') || cell.hasClass('dt_max_date_disabled')) {
 					return;
 				}
-				
 				var curr_date = new Date(obj.data('dt_curr_date').valueOf());
 				var table_data = cell.closest('table').data('dt_data');
 				var day_num = parseInt(cell.text());
 				var month_num = table_data.month;
 				var year_num = table_data.year;
 				var new_date = new Date();
-				new_date.setFullYear(year_num);
-				new_date.setMonth(month_num);
+
 				new_date.setDate(day_num);
+				new_date.setMonth(month_num);
+				new_date.setFullYear(year_num);
+
 				// Off we go
 				var dt_y = dt_utils.yield;
 				dt_y(function(arr) {
